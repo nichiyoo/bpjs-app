@@ -1,0 +1,89 @@
+{
+    "landing": {
+        "title": "Sistem Monitoring Badan Pusat Statistik Kabupaten Indragiri Hulu",
+        "subtitle": "Sebagai monitoring sistem, untuk memantau kegiatan Badan Pusat Statistik Kabupaten Indragiri Hulu",
+        "action": "Dashboard"
+    },
+    "feature": {
+        "title": "Fitur",
+        "description": "Berbagai fitur yang memungkinkan pengguna untuk mengetahui data kegiatan terbaru dan selalu siap kapan saja melihat update informasi"
+    },
+    "contact": {
+        "title": "Kontak",
+        "description": "Silakan hubungi kami jika ada masalah atau ingin menambahkan fitur baru"
+    },
+    "fields": {
+        "name": {
+            "label": "Nama",
+            "placeholder": "Nama Lengkap"
+        },
+        "username": {
+            "label": "Username",
+            "placeholder": "Username"
+        },
+        "address": {
+            "label": "Alamat",
+            "placeholder": "Alamat Sesuai KTP"
+        },
+        "email": {
+            "label": "Email",
+            "placeholder": "Alamat Email"
+        },
+        "phone": {
+            "label": "Nomor Telepon",
+            "placeholder": "Nomor Telepon"
+        },
+        "message": {
+            "label": "Pesan",
+            "placeholder": "Tulis Pesan Anda"
+        },
+        "password": {
+            "label": "Kata Sandi",
+            "placeholder": "Kata Sandi Anda"
+        },
+        "password_confirmation": {
+            "label": "Konfirmasi Kata Sandi",
+            "placeholder": "Konfirmasi Kata Sandi Anda"
+        },
+        "forget": {
+            "label": "Lupa Kata Sandi?"
+        },
+        "remember": {
+            "label": "Ingat Saya"
+        },
+        "submit": {
+            "label": "Kirim"
+        },
+        "reset": {
+            "label": "Reset"
+        }
+    },
+    "about": {
+        "title": "Tentang Kami",
+        "description": "BARKA (Badan Pusat Statistik Kegiatan Monitoring) merupakan Sistem Monitoring dan Pelaporan Kegiatan Badan Pusat Statistik (BPS) Berbasis IWebsite. Platform ini berperan sebagai alat pemantauan untuk berbagai kegiatan yang dilakukan oleh BPS. BARKA terintegrasi dengan web untuk menyajikan data kegiatan secara real-time."
+    },
+    "auth": {
+        "login": "Masuk",
+        "register": "Daftar",
+        "logout": "Keluar",
+        "description": "Silakan masuk dengan akun yang sudah terdaftar, atau daftar sekarang.",
+        "unregistered": "Belum memiliki akun?",
+        "registered": "Sudah memiliki akun?"
+    },
+    "recovery": {
+        "title": "Pengembalian Kata Sandi",
+        "description": "Silakan masuk dengan akun yang sudah terdaftar, atau daftar sekarang."
+    },
+    "confirmation": {
+        "title": "Konfirmasi Kata Sandi",
+        "description": "Halaman ini diproteksi, silahkan konfirmasi kata sandi anda sebelum melanjutkan."
+    },
+    "reset": {
+        "title": "Pengembalian Kata Sandi",
+        "description": "Silakan masuk dengan akun yang sudah terdaftar, atau daftar sekarang."
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "description": "Dashboard ini menampilkan data kegiatan yang dilakukan oleh BPS."
+    }
+}

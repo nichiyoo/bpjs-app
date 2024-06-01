@@ -1,0 +1,22 @@
+<svg width="1443" height="222" viewBox="0 0 1443 222" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.68881 178.378C34.5719 140.903 60.3986 6.13915 95.3538 5.40393C139.048 4.48491 199.888 182.667 280.069 178.378C360.249 174.09 350.339 137.633 388.178 138.246C426.016 138.859 433.223 118.948 469.71 118.029C506.196 117.11 534.124 61.0803 574.215 61.693C614.305 62.3057 677.369 178.378 739.531 178.378C801.694 178.378 779.621 129.977 812.505 129.364C845.388 128.751 811.153 162.449 896.289 162.449C981.425 162.449 1012.06 207.594 1052.15 207.594C1092.24 207.594 1145.39 129.364 1200.34 129.364C1255.3 129.364 1214.76 178.378 1266.11 178.378C1317.46 178.378 1297.64 207.594 1341.33 207.594C1376.29 207.594 1419.12 220.653 1442.69 220.653" stroke="url(#paint0_linear_108_3723)" stroke-width="2"/>
+<circle cx="96.7048" cy="5.85406" r="5.35406" fill="#FF7C7C" stroke="white"/>
+<circle cx="279.532" cy="178.774" r="5.35406" fill="#FFE27C" stroke="white"/>
+<circle cx="375.898" cy="140.047" r="5.35406" fill="#FFC37C" stroke="white"/>
+<circle cx="474.067" cy="118.432" r="5.35406" fill="#FFAB7C" stroke="white"/>
+<circle cx="573.135" cy="62.5933" r="5.35406" fill="#FF947C" stroke="white"/>
+<circle cx="738.85" cy="178.774" r="5.35406" fill="#FFE27C" stroke="white"/>
+<circle cx="813.602" cy="130.14" r="5.35406" fill="#FFC37C" stroke="white"/>
+<circle cx="888.354" cy="162.563" r="5.35406" fill="#FFCB7C" stroke="white"/>
+<circle cx="1050.47" cy="207.594" r="5.35406" fill="#EDFF7C" stroke="white"/>
+<circle cx="1198.17" cy="130.14" r="5.35406" fill="#FFC37C" stroke="white"/>
+<circle cx="1245.9" cy="173.37" r="5.35406" fill="#FFE27C" stroke="white"/>
+<circle cx="1296.34" cy="185.079" r="5.35406" fill="#FFEA7C" stroke="white"/>
+<circle cx="1366.59" cy="210.296" r="5.35406" fill="#DDFF7C" stroke="white"/>
+<defs>
+<linearGradient id="paint0_linear_108_3723" x1="54.3754" y1="229.209" x2="1409.37" y2="229.209" gradientUnits="userSpaceOnUse">
+<stop stop-color="#214E5C"/>
+<stop offset="1" stop-color="#DCEDB9"/>
+</linearGradient>
+</defs>
+</svg>
