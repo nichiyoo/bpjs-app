@@ -1,6 +1,10 @@
 @props(['center' => false, 'as' => 'h2'])
 
-<header class="max-w-xl mb-8 space-y-2 @if ($center) text-center mx-auto @endif">
+@php
+    $scenter = $center ? 'text-center mx-auto' : 'text-start';
+@endphp
+
+<header {{ $attributes->merge(['class' => "max-w-2xl space-y-2 {$scenter}"]) }}>
     @if ($as === 'h3')
         <h3 class="text-xl font-bold text-primary">
             {{ $title }}

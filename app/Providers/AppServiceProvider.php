@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Translation\Translator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->extend('translator', function ($service, $app) {
             return new Translator($service->getLoader(), $service->getLocale());
+        });
+
+        Blade::if('role', function ($role) {
+            return Auth::user()->hasRole($role);
         });
     }
 }

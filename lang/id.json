@@ -1,8 +1,7 @@
 {
     "landing": {
         "title": "Sistem Monitoring Badan Pusat Statistik Kabupaten Indragiri Hulu",
-        "subtitle": "Sebagai monitoring sistem, untuk memantau kegiatan Badan Pusat Statistik Kabupaten Indragiri Hulu",
-        "action": "Dashboard"
+        "subtitle": "Sebagai monitoring sistem, untuk memantau kegiatan Badan Pusat Statistik Kabupaten Indragiri Hulu"
     },
     "feature": {
         "title": "Fitur",
@@ -45,6 +44,10 @@
             "label": "Konfirmasi Kata Sandi",
             "placeholder": "Konfirmasi Kata Sandi Anda"
         },
+        "nks": {
+            "label": "NKS",
+            "placeholder": "No NKS"
+        },
         "forget": {
             "label": "Lupa Kata Sandi?"
         },
@@ -85,5 +88,38 @@
     "dashboard": {
         "title": "Dashboard",
         "description": "Dashboard ini menampilkan data kegiatan yang dilakukan oleh BPS."
+    },
+    "survey": {
+        "name": {
+            "label": "Nama Survei",
+            "placeholder": "Nama Survei"
+        },
+        "duration": {
+            "label": "Durasi Survei"
+        },
+        "start": {
+            "label": "Tanggal Mulai"
+        },
+        "end": {
+            "label": "Tanggal Selesai"
+        },
+        "sample": {
+            "label": "Jumlah Sampel"
+        },
+        "status": {
+            "label": "Status Progress"
+        },
+        "annotation": {
+            "label": "Keterangan"
+        },
+        "document": {
+            "label": "Jumlah Dokumen"
+        },
+        "entry": {
+            "label": "Jumlah Entry"
+        },
+        "type": {
+            "label": "Tipe Survei"
+        }
     }
 }

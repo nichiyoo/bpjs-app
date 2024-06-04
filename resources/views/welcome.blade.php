@@ -33,15 +33,25 @@
                     <h1 class="text-4xl font-bold text-tertiary">
                         {{ __('landing.title') }}
                     </h1>
-                    <p class="text-lg text-neutral-500">
+                    <p class="text-neutral-500">
                         {{ __('landing.subtitle') }}
                     </p>
 
-                    <a href="{{ route('dashboard') }}" class="block">
-                        <x-button variant="primary">
-                            {{ __('landing.action') }}
-                        </x-button>
-                    </a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="block">
+                            <x-button variant="primary">
+                                {{ __('dashboard.title') }}
+                            </x-button>
+                        </a>
+                    @endauth
+
+                    @guest
+                        <a href="{{ route('login') }}" class="block">
+                            <x-button variant="primary">
+                                {{ __('auth.login') }}
+                            </x-button>
+                        </a>
+                    @endguest
                 </div>
 
                 <div class="w-full aspect-square">
@@ -55,7 +65,7 @@
     </section>
 
     <section id="feature" class="py-20 w-content">
-        <x-header center>
+        <x-header class="mb-8" center>
             <x-slot name="title">
                 {{ __('feature.title') }}
             </x-slot>
@@ -77,7 +87,7 @@
                             {{ $feature['title'] }}
                         </h3>
 
-                        <p class="text-sm text-neutral-600">
+                        <p class="text-neutral-600">
                             {{ $feature['description'] }}
                         </p>
                     </div>
@@ -87,7 +97,7 @@
     </section>
 
     <section id="contact" class="py-20 w-content">
-        <x-header center>
+        <x-header class="mb-8" center>
             <x-slot name="title">
                 {{ __('contact.title') }}
             </x-slot>
@@ -139,7 +149,7 @@
                 </div>
 
                 <div class="flex items-center justify-end space-x-4">
-                    <x-button type="reset" variant="ghost">
+                    <x-button type="reset" variant="outline">
                         {{ __('fields.reset.label') }}
                     </x-button>
 
@@ -153,7 +163,7 @@
 
     <section id="about" class="py-20 w-content">
         <div class="grid items-start gap-8 pt-20 lg:grid-cols-2">
-            <x-header>
+            <x-header class="mb-8">
                 <x-slot name="title">
                     {{ __('about.title') }}
                 </x-slot>
@@ -176,7 +186,7 @@
                                 <h3 class="font-semibold text-primary">
                                     {{ $service['title'] }}
                                 </h3>
-                                <p class="text-sm text-neutral-600">
+                                <p class="text-neutral-600">
                                     {{ $service['description'] }}
                                 </p>
                             </div>

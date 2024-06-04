@@ -8,11 +8,15 @@
         --color-secondary: 185 212 255;
         --color-tertiary: 103 124 156;
         --color-success: 145 192 109;
-        --color-danger: 233 132 88;
+        --color-danger: 198 32 7;
         --color-warning: 255 194 14;
     }
 
+    [x-cloak] {
+        display: none !important;
+    }
+
     .w-content {
-        @apply w-full px-8 mx-auto max-w-7xl;
+        @apply w-full max-w-6xl px-8 mx-auto;
     }
 }

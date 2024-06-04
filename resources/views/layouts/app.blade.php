@@ -20,28 +20,24 @@
     @stack('styles')
 </head>
 
-<body class="font-sans antialiased">
+<body class="overflow-x-hidden font-sans antialiased leading-relaxed bg-neutral-50">
     <div class="flex flex-col md:flex-row md:h-screen">
         <x-sidebar />
 
-        <main class="flex-1 w-content">
-            <nav class="py-6">
+        <main class="flex-1 overflow-y-scroll">
+            <nav class="py-6 w-content">
                 <div class="flex items-start justify-between">
                     <div>
                         <h1 class="text-2xl font-bold text-primary">{{ $page }}</h1>
-                        <span class="text-sm text-tertiary">{{ date('d M Y') }}</span>
+                        <span class="text-sm text-tertiary">{{ now()->translatedFormat('d F Y') }}</span>
                     </div>
-
-                    <div class="flex items-center space-x-4">
-                        <span class="text-sm font-medium text-primary">{{ Auth::user()->name }}</span>
-                        <img class="w-10 h-10 rounded-full"
-                            src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=random' }}"
-                            alt="{{ Auth::user()->name }}">
-                    </div>
+                    <x-avatar name="{{ Auth::user()->name }}" size="sm" expand />
                 </div>
             </nav>
 
-            {{ $slot }}
+            <div class="w-content">
+                {{ $slot }}
+            </div>
         </main>
     </div>
 

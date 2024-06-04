@@ -1,6 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\DistrictController as AdminDistrictController;
+use App\Http\Controllers\Admin\VillageController as AdminVillageController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\OfficerController as AdminOfficerController;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SurveyController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,14 +56,45 @@ Route::get('/', function () {
     ]);
 })->name('landing');
 
-Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+
+/*
+* Helper to redirect to dashboard
+*/
+
+Route::middleware('auth')->get('/dashboard', function () {
+    return redirect()->route(Auth::user()->role . 's.dashboards.index');
 })->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+/*
+* Admin Related Routes
+*/
+Route::middleware(['auth', 'role:admin'])
+    ->prefix('admins')
+    ->name('admins.')
+    ->group(function () {
+        Route::resource('dashboards', AdminDashboardController::class)->only(['index']);
+        Route::resource('districts', AdminDistrictController::class)->only(['index']);
+        Route::resource('villages', AdminVillageController::class)->only(['index']);
+        Route::resource('users', AdminUserController::class)->only(['index']);
+        Route::resource('officers', AdminOfficerController::class)->only(['index']);
+    });
+
+
+/*
+* User Related Routes
+*/
+Route::middleware(['auth'])
+    ->prefix('users')
+    ->name('users.')
+    ->group(function () {
+        Route::resource('dashboards', DashboardController::class)->only(['index']);
+        Route::resource('surveys', SurveyController::class);
+    });
+
+// Route::middleware(['auth', 'role:user'])->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';

@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-status class="mb-4" :status="session('status')" />
 
-    <x-header as="h3" center>
+    <x-header class="mb-8" as="h3" center>
         <x-slot name="title">
             {{ __('confirmation.title') }}
         </x-slot>

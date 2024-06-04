@@ -21,7 +21,7 @@
             ];
         @endphp
 
-        <ul class="flex items-center space-x-4">
+        <ul class="items-center hidden space-x-4 md:flex">
             @foreach ($navigations as $navigation)
                 <li>
                     <a href="{{ $navigation['url'] }}" class="text-primary hover:text-primary">
@@ -32,20 +32,12 @@
         </ul>
 
         @auth
-            <div class="flex items-center space-x-4">
-                <a href="{{ route('dashboard') }}">
-                    <x-button variant="primary">
-                        {{ __('dashboard.title') }}
-                    </x-button>
-                </a>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-button variant="ghost">
-                        {{ __('auth.logout') }}
-                    </x-button>
-                </form>
-            </div>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-button variant="outline">
+                    {{ __('auth.logout') }}
+                </x-button>
+            </form>
         @else
             <a href="{{ route('login') }}">
                 <x-button variant="primary">

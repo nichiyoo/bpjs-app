@@ -3,10 +3,10 @@
 @php
     $vclass = match ($variant) {
         'primary' => 'text-white bg-primary hover:bg-primary/90 focus:bg-primary/90 border-transparent',
-        'ghost' => 'text-primary bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 border-transparent',
+        'ghost' => 'text-neutral-500 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 border-transparent',
         'danger' => 'text-white bg-danger hover:bg-danger/90 focus:bg-danger/90 border-transparent',
         'link' => 'text-primary bg-transparent hover:underline focus:underline border-transparent',
-        'outline' => 'text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white border-primary',
+        'outline' => 'text-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white',
         'invert-primary' => 'text-primary bg-white hover:bg-white/90 border-transparent',
         'invert-outline' => 'text-white hover:bg-white hover:text-primary border-transparent',
     };
