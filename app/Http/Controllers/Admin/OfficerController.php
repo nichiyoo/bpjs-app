@@ -16,18 +16,24 @@ class OfficerController extends Controller
      */
     public function index(Request $request): View
     {
-        $district = request('district');
         $nks = request('nks');
+        $district = request('district');
+        $name = request('name');
 
         $districts = District::all();
         $officers = Officer::with('village', 'village.district', 'user')
+            ->when($nks, function ($query) use ($nks) {
+                $query->where('nks', 'like', "%{$nks}%");
+            })
             ->when($district, function ($query) use ($district) {
                 $query->whereHas('village.district', function ($query) use ($district) {
                     $query->where('id', $district);
                 });
             })
-            ->when($nks, function ($query) use ($nks) {
-                $query->where('nks', 'like', "%{$nks}%");
+            ->when($name, function ($query) use ($name) {
+                $query->whereHas('user', function ($query) use ($name) {
+                    $query->where('name', 'like', "%{$name}%");
+                });
             })
             ->orderBy('nks')
             ->paginate(10)

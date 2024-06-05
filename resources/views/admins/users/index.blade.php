@@ -14,6 +14,21 @@
             </x-slot>
         </x-header>
 
+        <form action="{{ route('admins.users.index') }}" method="get" class="flex items-end space-x-4"
+            x-data="{
+                $form: null,
+                init() {
+                    this.$form = this.$refs.form;
+                    this.$form.name.focus();
+                },
+            }" x-ref="form">
+            <div>
+                <x-label for="name" :value="__('fields.name.label')" />
+                <x-input id="name" type="text" name="name" placeholder="{{ __('fields.name.placeholder') }}"
+                    value="{{ $name ?? old('name') }}" autocomplete="name" x-on:input.debounce.500ms="$form.submit()" />
+            </div>
+        </form>
+
         <div class="w-full overflow-x-auto border rounded-lg border-neutral-200">
             <table class="w-full text-sm table-auto">
                 <thead class="bg-primary">

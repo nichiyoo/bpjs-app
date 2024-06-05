@@ -13,11 +13,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10)
+        $name = request('name');
+
+        $users = User::when($name, function ($query) use ($name) {
+            $query->where('name', 'like', "%{$name}%");
+        })
+            ->paginate(10)
             ->withQueryString();
 
         return view('admins.users.index', [
             'users' => $users,
+            'name' => $name,
         ]);
     }
 

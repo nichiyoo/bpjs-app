@@ -42,6 +42,13 @@
                 <x-input id="nks" type="text" name="nks" placeholder="{{ __('fields.nks.placeholder') }}"
                     value="{{ $nks ?? old('nks') }}" autocomplete="nks" x-on:input.debounce.500ms="$form.submit()" />
             </div>
+
+            <div>
+                <x-label for="name" :value="__('fields.name.label')" />
+                <x-input id="name" type="text" name="name" placeholder="{{ __('fields.name.placeholder') }}"
+                    value="{{ $name ?? old('name') }}" autocomplete="name"
+                    x-on:input.debounce.500ms="$form.submit()" />
+            </div>
         </form>
 
         <div class="w-full overflow-x-auto border rounded-lg border-neutral-200">
