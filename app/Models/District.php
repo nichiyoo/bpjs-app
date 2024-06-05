@@ -11,6 +11,11 @@ class District extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are not mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $guarded = [];
 
     public function villages(): HasMany

@@ -2,10 +2,11 @@
 
 <div x-data="{
     show: null,
-    data: null,
+    form: null,
     name: @js($name),
 
     init() {
+        this.form = this.$refs.form;
         this.$watch('show', value => {
             if (value) {
                 document.body.classList.add('overflow-y-hidden');
@@ -19,12 +20,12 @@
         if (this.name !== detail.name)
             return;
         this.show = true;
-        this.data = detail.data;
+        this.form.action = detail.route;
     },
 
     hide() {
         this.show = false;
-        this.data = null;
+        this.form.action = null;
     },
 }" x-on:modal.window="display($event.detail)" x-on:close.stop="hide()"
     x-on:keydown.escape.window="hide()" x-on:keydown.escape.window="hide()" x-bind:class="{ 'hidden': !show }"
@@ -47,7 +48,40 @@
             x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200"
             x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
             x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-            {{ $slot }}
+
+            <div class="relative p-8 space-y-6">
+                <div class="space-y-4 text-center">
+                    <div class="inline-flex p-2 rounded-full bg-danger/20">
+                        <div class="flex items-center justify-center w-10 h-10 text-white rounded-full bg-danger">
+                            <i data-lucide="trash-2" class="size-5"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-primary">
+                            {{ __('Konfirmasi Perubahan') }}
+                        </h3>
+                        <p class="text-sm text-neutral-600">
+                            {{ __('Anda akan menghapus data berikut? apakah Anda yakin detailnya sudah akurat?') }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <x-button variant="outline" x-on:click="$dispatch('close')">
+                        {{ __('Batal') }}
+                    </x-button>
+
+                    <form method="post" x-ref="form">
+                        @csrf
+                        @method('DELETE')
+
+                        <x-button variant="danger" type="submit" class="w-full">
+                            {{ __('Hapus') }}
+                        </x-button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

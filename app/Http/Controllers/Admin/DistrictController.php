@@ -13,7 +13,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts = District::withCount('villages')->paginate(10);
+        $districts = District::withCount('villages')->paginate(10)
+            ->withQueryString();
 
         return view('admins.districts.index', [
             'districts' => $districts,

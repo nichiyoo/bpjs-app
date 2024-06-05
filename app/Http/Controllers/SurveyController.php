@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Auth;
 class SurveyController extends Controller
 {
     protected array $durations = ['Bulanan', 'Tahunan'];
-    protected array $types = ['IPDS', 'Produksi', 'Distribusi', 'Neraca', 'Sosial'];
     protected array $statuses = ['Berjalan', 'Selesai'];
-
-    protected string $default = 'IPDS';
+    protected array $types = ['IPDS', 'Produksi', 'Distribusi', 'Neraca', 'Sosial'];
 
     /**
      * Display a listing of the resource.
@@ -29,8 +27,8 @@ class SurveyController extends Controller
         $user = request()->user();
 
         $status = request('status');
-        $type = request('type') ?? $this->default;
-        $type = in_array($type, $this->types) ? $type : $this->default;
+        $type = request('type') ?? $this->types[0];
+        $type = in_array($type, $this->types) ? $type : $this->types[0];
 
         $surveys = Survey::when($user, function ($query) use ($user) {
             return $user->hasRole('admin') ? $query : $query->where('user_id', $user->id);
@@ -41,7 +39,8 @@ class SurveyController extends Controller
             ->when($status, function ($query) use ($status) {
                 return $query->where('status', $status);
             })
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
         return view('users.surveys.index', [
             'surveys' => $surveys,
@@ -57,12 +56,16 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function create(): View
+    public function create(Request $request): View
     {
+        $type = $request->get('type') ?? $this->types[0];
+        $type = in_array($type, $this->types) ? $type : $this->types[0];
+
         return view('users.surveys.create', [
             'types' => $this->types,
             'durations' => $this->durations,
             'statuses' => $this->statuses,
+            'type' => $type,
         ]);
     }
 
@@ -71,10 +74,12 @@ class SurveyController extends Controller
      */
     public function store(StoreSurveyRequest $request)
     {
+        $user = request()->user();
+
         $validated = $request->validated();
         $type = $request->get('type');
 
-        User::find(Auth::user()->id)
+        User::find($user->id)
             ->surveys()
             ->create($validated);
 
@@ -118,7 +123,13 @@ class SurveyController extends Controller
      */
     public function update(UpdateSurveyRequest $request, Survey $survey)
     {
-        //
+        $validated = $request->validated();
+
+        $survey->update($validated);
+
+        return redirect()
+            ->route('users.surveys.index', ['type' => $survey->type])
+            ->with('success', __('Data berhasil diubah'));
     }
 
     /**
@@ -131,14 +142,13 @@ class SurveyController extends Controller
         $user = request()->user();
         $admin = $user->hasRole('admin');
 
-        if ($admin || $user->id === $survey->user_id) {
-            $survey->delete();
-        } else {
+        if (!$admin && $user->id === $survey->user_id) {
             return redirect()
                 ->route('users.surveys.index', ['type' => $type])
                 ->with('error', __('Tidak dapat menghapus survei ini, anda harus menjadi admin atau pengguna yang membuat survei ini'));
         }
 
+        $survey->delete();
         return redirect()
             ->route('users.surveys.index', ['type' => $type])
             ->with('success', __('Data berhasil dihapus'));

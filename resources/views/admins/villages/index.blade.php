@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     @forelse ($villages as $village)
-                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:border-t *:border-neutral-200">
+                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate">
                             <td>{{ sprintf('%03d', $village->id) }}</td>
                             <td>
                                 <span class="font-medium text-primary">
@@ -54,7 +54,7 @@
                             <td>{{ $village->district->name }}</td>
                         </tr>
                     @empty
-                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:border-t *:border-neutral-200">
+                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate">
                             <td colSpan="3">{{ __('Tidak ada data') }}</td>
                         </tr>
                     @endforelse
@@ -63,6 +63,6 @@
         </div>
 
 
-        {{ $villages->onEachSide(0)->links() }}
+        {{ $villages->links() }}
     </div>
 </x-app-layout>

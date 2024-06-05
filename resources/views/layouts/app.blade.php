@@ -41,12 +41,6 @@
         </main>
     </div>
 
-    <!-- Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
-
     <!-- Scripts -->
     @stack('scripts')
 </body>

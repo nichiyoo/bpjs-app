@@ -7,6 +7,10 @@ use Illuminate\Validation\Rule;
 
 class StoreSurveyRequest extends FormRequest
 {
+    protected array $durations = ['Bulanan', 'Tahunan'];
+    protected array $statuses = ['Berjalan', 'Selesai'];
+    protected array $types = ['IPDS', 'Produksi', 'Distribusi', 'Neraca', 'Sosial'];
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -30,9 +34,9 @@ class StoreSurveyRequest extends FormRequest
             'sample' => ['required', 'numeric', 'min:1'],
             'document' => ['required', 'numeric', 'min:1', 'max:' . $this->get('sample')],
             'entry' => ['required', 'numeric', 'min:1', 'max:' . $this->get('document')],
-            'status' => ['required', 'string', Rule::in(['Berjalan', 'Selesai'])],
-            'type' => ['required', 'string', Rule::in(['IPDS', 'Produksi', 'Distribusi', 'Neraca', 'Sosial'])],
-            'duration' => ['required', 'string', Rule::in(['Bulanan', 'Tahunan'])],
+            'status' => ['required', 'string', Rule::in($this->statuses)],
+            'type' => ['required', 'string', Rule::in($this->types)],
+            'duration' => ['required', 'string', Rule::in($this->durations)],
         ];
     }
 

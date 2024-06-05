@@ -22,7 +22,8 @@ class VillageController extends Controller
             ->when($district, function ($query, $district) use ($request) {
                 return $query->where('district_id', $district);
             })
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admins.villages.index', [
             'district' => $district,

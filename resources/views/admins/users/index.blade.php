@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                     @forelse ($users as $user)
-                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:border-t *:border-neutral-200">
+                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate">
                             <td>{{ sprintf('%03d', $user->id) }}</td>
                             <td>
                                 <x-avatar name="{{ $user->name }}" size="sm" expand />
@@ -35,7 +35,7 @@
                             <td>{{ $user->email }}</td>
                         </tr>
                     @empty
-                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:border-t *:border-neutral-200">
+                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate">
                             <td colSpan="4">{{ __('Tidak ada data') }}</td>
                         </tr>
                     @endforelse
@@ -44,6 +44,6 @@
         </div>
 
 
-        {{ $users->onEachSide(0)->links() }}
+        {{ $users->links() }}
     </div>
 </x-app-layout>

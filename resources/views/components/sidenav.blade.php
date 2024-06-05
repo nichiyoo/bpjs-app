@@ -16,6 +16,7 @@
     },
 
     toggle() {
+        if (!open) open = true;
         this.expanded = !this.expanded;
         this.ref.classList.toggle('hidden');
         this.arrow.classList.toggle('rotate-180');

@@ -48,6 +48,9 @@
             "label": "NKS",
             "placeholder": "No NKS"
         },
+        "district": {
+            "label": "Kecamatan"
+        },
         "forget": {
             "label": "Lupa Kata Sandi?"
         },
@@ -120,6 +123,39 @@
         },
         "type": {
             "label": "Tipe Survei"
+        }
+    },
+    "pcl": {
+        "type": {
+            "label": "Tipe Fungsi"
+        },
+        "category": {
+            "label": "Kegiatan"
+        },
+        "nks": {
+            "label": "NKS"
+        },
+        "before": {
+            "label": "Jumlah Keluarga Sebelum Pemutakhiran",
+            "placeholder": "Masukkan Jumlah"
+        },
+        "after": {
+            "label": "Jumlah Keluarga Setelah Pemutakhiran",
+            "placeholder": "Masukkan Jumlah"
+        },
+        "household": {
+            "label": "Jumlah Rumah Tangga Hasil Pemutakhiran",
+            "placeholder": "Masukkan Jumlah"
+        },
+        "sample": {
+            "label": "Nomor Urut Sampel",
+            "placeholder": "Masukkan Nomor Urut Sampel"
+        },
+        "kor": {
+            "label": "Hasil Pencacahan Rumah Tangga KOR"
+        },
+        "kp": {
+            "label": "Hasil Pencacahan Rumah Tangga KP"
         }
     }
 }

@@ -29,7 +29,9 @@ class OfficerController extends Controller
             ->when($nks, function ($query) use ($nks) {
                 $query->where('nks', 'like', "%{$nks}%");
             })
-            ->paginate(10);
+            ->orderBy('nks')
+            ->paginate(10)
+            ->withQueryString();
 
 
         return view('admins.officers.index', [

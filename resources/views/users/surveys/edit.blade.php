@@ -21,7 +21,7 @@
             <div class="col-span-full">
                 <x-label for="name" :value="__('survey.name.label')" />
                 <x-input id="name" type="text" name="name" placeholder="{{ __('survey.name.placeholder') }}"
-                    value="{{ $survey->name ?? old('name') }}" autocomplete="name" autofocus required />
+                    value="{{ old('name') ?? $survey->name }}" autocomplete="name" autofocus required />
                 <x-error :value="$errors->get('name')" />
             </div>
 
@@ -51,30 +51,30 @@
 
             <div>
                 <x-label for="start" :value="__('survey.start.label')" />
-                <x-input id="start" type="date" name="start" value="{{ $survey->start ?? old('start') }}"
-                    required />
+                <x-input id="start" type="date" name="start"
+                    value="{{ old('start') ?? $survey->start->format('Y-m-d') }}" required />
                 <x-error :value="$errors->get('start')" />
             </div>
 
             <div>
                 <x-label for="end" :value="__('survey.end.label')" />
-                <x-input id="end" type="date" name="end" value="{{ $survey->end ?? old('end') }}"
-                    required />
+                <x-input id="end" type="date" name="end"
+                    value="{{ old('end') ?? $survey->end->format('Y-m-d') }}" required />
                 <x-error :value="$errors->get('end')" />
             </div>
 
             <div class="col-span-full">
                 <x-label for="sample" :value="__('survey.sample.label')" />
-                <x-input id="sample" type="number" name="sample" value="{{ $survey->sample ?? old('sample') }}"
+                <x-input id="sample" type="number" name="sample" value="{{ old('sample') ?? $survey->sample }}"
                     required />
                 <x-error :value="$errors->get('sample')" />
             </div>
 
             <div class="col-span-full">
                 <x-label for="status" :value="__('survey.status.label')" />
-                <x-select id="status" name="status" value="{{ $survey->status ?? old('status') }}" required>
+                <x-select id="status" name="status" value="{{ old('status') ?? $survey->status }}" required>
                     @foreach ($statuses as $item)
-                        <option value="{{ $item }}" @if ($item == old('status')) selected @endif>
+                        <option value="{{ $item }}" @if ($item == old('status') ?? $item == $survey->status) selected @endif>
                             {{ $item }}
                         </option>
                     @endforeach
@@ -84,7 +84,7 @@
 
             <div class="col-span-full">
                 <x-label for="annotation" :value="__('survey.annotation.label')" />
-                <x-textarea id="annotation" name="annotation" value="{{ $survey->annotation ?? old('annotation') }}"
+                <x-textarea id="annotation" name="annotation" value="{{ old('annotation') ?? $survey->annotation }}"
                     rows="3" />
                 <x-error :value="$errors->get('annotation')" />
             </div>
@@ -98,7 +98,7 @@
 
             <div>
                 <x-label for="entry" :value="__('survey.entry.label')" />
-                <x-input id="entry" type="number" name="entry" value="{{ $survey->entry ?? old('entry') }}"
+                <x-input id="entry" type="number" name="entry" value="{{ old('entry') ?? $survey->entry }}"
                     required />
                 <x-error :value="$errors->get('entry')" />
             </div>

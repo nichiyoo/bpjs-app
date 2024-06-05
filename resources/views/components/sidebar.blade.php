@@ -22,17 +22,6 @@
     </div>
 
     @php
-        $pcls = [
-            [
-                'label' => __('Fungsi IPDS'),
-                'href' => '#',
-            ],
-            [
-                'label' => __('Fungsi Produksi'),
-                'href' => '#',
-            ],
-        ];
-
         $surveys = [
             [
                 'label' => __('Fungsi IPDS'),
@@ -53,6 +42,28 @@
             [
                 'label' => __('Fungsi Distribusi'),
                 'href' => route('users.surveys.index', ['type' => 'Distribusi']),
+            ],
+        ];
+
+        $households = [
+            [
+                'label' => __('Fungsi IPDS'),
+                'href' => route('users.households.index', ['type' => 'IPDS']),
+            ],
+            [
+                'label' => __('Fungsi Produksi'),
+                'href' => route('users.households.index', ['type' => 'Produksi']),
+            ],
+        ];
+
+        $progresses = [
+            [
+                'label' => __('Fungsi IPDS'),
+                'href' => route('users.progresses.index', ['type' => 'IPDS']),
+            ],
+            [
+                'label' => __('Fungsi Produksi'),
+                'href' => route('users.progresses.index', ['type' => 'Produksi']),
             ],
         ];
 
@@ -78,7 +89,7 @@
 
     <div class="px-4 mb-24 space-y-6">
         <x-sidenav open="$open" label="{{ __('Dashboard') }}" icon="home">
-            <li><a href="#">{{ __('Statistik') }}</a></li>
+            <li><a href="{{ route('dashboard') }}">{{ __('Statistik') }}</a></li>
         </x-sidenav>
 
         <x-sidenav open="$open" label="{{ __('Data Petugas Survei') }}" icon="bar-chart-3">
@@ -91,18 +102,28 @@
             @endforeach
         </x-sidenav>
 
-        <x-sidenav open="$open" label="{{ __('Data Petugas Cacah Lapangan') }}" icon="database">
-            @foreach ($pcls as $pcl)
+        <x-sidenav open="$open" label="{{ __('Data Pemutrakhiran') }}" icon="database">
+            @foreach ($households as $household)
                 <li>
-                    <a href="{{ $pcl['href'] }}">
-                        {{ $pcl['label'] }}
+                    <a href="{{ $household['href'] }}">
+                        {{ $household['label'] }}
+                    </a>
+                </li>
+            @endforeach
+        </x-sidenav>
+
+        <x-sidenav open="$open" label="{{ __('Data Progress Lapangan') }}" icon="briefcase">
+            @foreach ($progresses as $progress)
+                <li>
+                    <a href="{{ $progress['href'] }}">
+                        {{ $progress['label'] }}
                     </a>
                 </li>
             @endforeach
         </x-sidenav>
 
         @role('admin')
-            <x-sidenav open="$open" label="{{ __('Data Administrator') }}" icon="shield-check">
+            <x-sidenav open="$open" label="{{ __('Master Data') }}" icon="shield-check">
                 @foreach ($admins as $admin)
                     <li>
                         <a href="{{ $admin['href'] }}">

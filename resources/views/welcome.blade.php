@@ -37,21 +37,23 @@
                         {{ __('landing.subtitle') }}
                     </p>
 
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="block">
-                            <x-button variant="primary">
-                                {{ __('dashboard.title') }}
-                            </x-button>
-                        </a>
-                    @endauth
+                    <div>
+                        @auth
+                            <a href="{{ route('dashboard') }}">
+                                <x-button variant="primary">
+                                    {{ __('dashboard.title') }}
+                                </x-button>
+                            </a>
+                        @endauth
 
-                    @guest
-                        <a href="{{ route('login') }}" class="block">
-                            <x-button variant="primary">
-                                {{ __('auth.login') }}
-                            </x-button>
-                        </a>
-                    @endguest
+                        @guest
+                            <a href="{{ route('login') }}">
+                                <x-button variant="primary">
+                                    {{ __('auth.login') }}
+                                </x-button>
+                            </a>
+                        @endguest
+                    </div>
                 </div>
 
                 <div class="w-full aspect-square">

@@ -28,7 +28,7 @@
                 <x-label for="type" :value="__('survey.type.label')" />
                 <x-select id="type" name="type" value="{{ old('type') }}" required>
                     @foreach ($types as $item)
-                        <option value="{{ $item }}" @if ($item == old('type')) selected @endif>
+                        <option value="{{ $item }}" @if ($item == old('type') ?? $item == $type) selected @endif>
                             {{ $item }}
                         </option>
                     @endforeach
@@ -50,13 +50,15 @@
 
             <div>
                 <x-label for="start" :value="__('survey.start.label')" />
-                <x-input id="start" type="date" name="start" value="{{ old('start') }}" required />
+                <x-input id="start" type="date" name="start" value="{{ old('start') ?? date('Y-m-d') }}"
+                    required />
                 <x-error :value="$errors->get('start')" />
             </div>
 
             <div>
                 <x-label for="end" :value="__('survey.end.label')" />
-                <x-input id="end" type="date" name="end" value="{{ old('end') }}" required />
+                <x-input id="end" type="date" name="end" value="{{ old('end') ?? date('Y-m-d') }}"
+                    required />
                 <x-error :value="$errors->get('end')" />
             </div>
 

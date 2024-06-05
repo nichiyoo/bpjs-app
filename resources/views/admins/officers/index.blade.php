@@ -49,14 +49,14 @@
                 <thead class="bg-primary">
                     <tr class="*:text-start *:px-8 *:py-2 *:font-medium *:text-white *:whitespace-nowrap">
                         <th class="w-20">{{ __('No NKS') }}</th>
-                        <th class="w-1/2 min-w-40">{{ __('Nama Petugas PCL') }}</th>
-                        <th class="w-1/2 min-w-40">{{ __('Nama Desa') }}</th>
-                        <th class="w-1/2 min-w-40">{{ __('Nama Kecamatan') }}</th>
+                        <th class="w-1/3 min-w-40">{{ __('Nama Petugas PCL') }}</th>
+                        <th class="w-1/3 min-w-40">{{ __('Nama Desa') }}</th>
+                        <th class="w-1/3 min-w-40">{{ __('Nama Kecamatan') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($officers as $officer)
-                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:border-t *:border-neutral-200">
+                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate">
                             <td>{{ $officer->nks }}</td>
                             <td>
                                 <x-avatar name="{{ $officer->user->name }}" size="sm" expand />
@@ -65,7 +65,7 @@
                             <td>{{ $officer->village->district->name }}</td>
                         </tr>
                     @empty
-                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:border-t *:border-neutral-200">
+                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate">
                             <td colSpan="4">{{ __('Tidak ada data') }}</td>
                         </tr>
                     @endforelse
@@ -74,6 +74,6 @@
         </div>
 
 
-        {{ $officers->onEachSide(0)->links() }}
+        {{ $officers->links() }}
     </div>
 </x-app-layout>
