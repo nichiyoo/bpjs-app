@@ -63,7 +63,8 @@
                 </thead>
                 <tbody>
                     @forelse ($officers as $officer)
-                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate">
+                        <tr
+                            class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate *:border-b *:border-neutral-200">
                             <td>{{ $officer->nks }}</td>
                             <td>
                                 <x-avatar name="{{ $officer->user->name }}" size="sm" expand />
@@ -72,7 +73,8 @@
                             <td>{{ $officer->village->district->name }}</td>
                         </tr>
                     @empty
-                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate">
+                        <tr
+                            class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate *:border-b *:border-neutral-200">
                             <td colSpan="4">{{ __('Tidak ada data') }}</td>
                         </tr>
                     @endforelse

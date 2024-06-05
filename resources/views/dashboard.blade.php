@@ -111,7 +111,8 @@
                                 <td>{{ $household->after }}</td>
                             </tr>
                         @empty
-                            <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate">
+                            <tr
+                                class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate *:border-b *:border-neutral-200">
                                 <td colSpan="4">{{ __('Tidak ada data') }}</td>
                             </tr>
                         @endforelse

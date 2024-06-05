@@ -75,7 +75,8 @@
 
                 <tbody>
                     @forelse ($surveys as $survey)
-                        <tr class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate">
+                        <tr
+                            class="*:text-start *:px-8 *:py-2 *:text-neutral-800 *:truncate *:border-b *:border-neutral-200">
                             <td>{{ sprintf('%03d', $survey->id) }}</td>
                             <td>
                                 <x-avatar name="{{ $survey->user->name }}" size="sm" expand />
@@ -109,7 +110,8 @@
                             </td>
                         </tr>
                     @empty
-                        <tr class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate">
+                        <tr
+                            class="*:text-center *:px-8 *:py-2 *:text-neutral-800 *:truncate *:border-b *:border-neutral-200">
                             <td colSpan="7">{{ __('Tidak ada data') }}</td>
                         </tr>
                     @endforelse
